@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Pilotos F1 - Aurex Corporation</title>
+    <title>Registro Equipos F1 - Aurex Corporation</title>
     <style>
         body {
             background-color: black;
@@ -41,37 +41,41 @@
 </head>
 <body>
 
-    <div id="header">Aurex Corporation - Registro Pilotos F1</div>
+    <div id="header">Aurex Corporation - Registro Equipos F1</div>
     <div class="form-container">
-        <h2>Formulario para Registro de Piloto F1</h2>
-        <form id="formularioPiloto">
-            <input type="text" id="nombreIC" class="input-box" placeholder="Nombre IC" required><br>
-            <input type="number" id="edadIC" class="input-box" placeholder="Edad IC" required><br>
-            <input type="text" id="user" class="input-box" placeholder="User" required><br>
-            <input type="number" id="numeroPiloto" class="input-box" placeholder="Número de Piloto" required><br>
-            <input type="file" id="fotoPiloto" class="input-box" required><br>
-            <button type="submit" class="submit-btn">Registrar Piloto</button>
+        <h2>Formulario para Registro de Equipo F1</h2>
+        <form id="formularioEquipo">
+            <input type="text" id="nombreEquipo" class="input-box" placeholder="Nombre del Equipo" required><br>
+            <input type="text" id="dueno" class="input-box" placeholder="Dueño (@)" required><br>
+            <input type="text" id="miembros" class="input-box" placeholder="Miembros" required><br>
+            <input type="text" id="color" class="input-box" placeholder="Color" required><br>
+            <input type="file" id="logo" class="input-box" required><br>
+            <button type="submit" class="submit-btn">Registrar Equipo</button>
         </form>
     </div>
 
     <script>
-        document.getElementById('formularioPiloto').addEventListener('submit', function(event) {
+        document.getElementById('formularioEquipo').addEventListener('submit', function(event) {
             event.preventDefault();
 
             let formData = new FormData();
-            formData.append("nombreIC", document.getElementById('nombreIC').value);
-            formData.append("edadIC", document.getElementById('edadIC').value);
-            formData.append("user", document.getElementById('user').value);
-            formData.append("numeroPiloto", document.getElementById('numeroPiloto').value);
-            formData.append("fotoPiloto", document.getElementById('fotoPiloto').files[0]);
+            formData.append("nombreEquipo", document.getElementById('nombreEquipo').value);
+            formData.append("dueno", document.getElementById('dueno').value);
+            formData.append("miembros", document.getElementById('miembros').value);
+            formData.append("color", document.getElementById('color').value);
+            formData.append("logo", document.getElementById('logo').files[0]);
 
-            fetch('https://discord.com/api/webhooks/1311858886243778560/bNo814xfHYVQR6v-yJLpagg1gZovujZXMPFGVOPhQ8O4QmslJNskOKJDTchfOPpp8XET', {
+            fetch('https://discord.com/api/webhooks/1311859474004312064/FsFuWn6JBkIbK8bDkdr0ZQugA6LoRqvr0FYJQqa3x7V-I8YGz2QMhn-hrCSNxo19iS3G', {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.json())
-            .then(data => alert('Piloto registrado con éxito'))
-            .catch(error => alert('Error al registrar el piloto'));
+            .then(data => {
+                alert('Equipo registrado con éxito');
+            })
+            .catch(error => {
+                alert('Error al registrar el equipo');
+            });
         });
     </script>
 
